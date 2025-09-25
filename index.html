@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NLZ SpVgg Bayreuth - Rechtliches</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        #output1 {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            /*background-color: #f9f9f9;*/
+        }
+    </style>
+</head>
+
+<body>
+
+    <main id="output">Lade Inhalt ...</main>
+
+    <!-- Marked.js einbinden -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const document_name = urlParams.get('doc') || 'impressum';
+        const url = 'https://legal.nlz-spvgg-bayreuth.de/docs/' + document_name + '.md';
+
+        fetch(url)
+            .then(response => response.text())
+            .then(markdown => {
+                let html_output = marked.parse(markdown);
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html_output, 'text/html');
+
+                let toc = '<div class="toc"><ul>'
+
+                doc.querySelectorAll('h2, h3, h4, h5, h6').forEach(heading => {
+                    if (true) {
+                        let id = heading.textContent.trim().toLowerCase()
+                            .replace(/[äöüß]/g, match => {
+                                const map = { 'ä': 'ae', 'ö': 'oe', 'ü': 'ue', 'ß': 'ss' };
+                                return map[match];
+                            })
+                            .replace(/[^a-z0-9\s-]/g, '') // Entferne Sonderzeichen
+                            .replace(/\s+/g, '-'); // Ersetze Leerzeichen durch Bindestriche
+                        heading.id = id;
+                    }
+
+                    toc += `<li class="toc-${heading.tagName.toLowerCase()}"><span href="#${heading.id}">${heading.textContent}</span></li>`;
+                });
+
+                toc += '</ul></div>';
+                document.getElementById('output').innerHTML = html_output.replace('[toc]', toc);
+            })
+            .catch(error => {
+                console.error('Fehler beim Abrufen der Markdown-Datei:', error);
+                document.getElementById('output').textContent = 'Fehler beim Laden des Inhalts.';
+            });
+    </script>
+
+</body>
+
+</html>

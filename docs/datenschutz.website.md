@@ -1,0 +1,1 @@
+Die Datenschutzbestimmungen wurden hier hin verschoben: <https://legal.nlz-spvgg-bayreuth.de/?doc=datenschutz.webseite>
