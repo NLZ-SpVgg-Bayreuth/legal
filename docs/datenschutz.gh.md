@@ -71,7 +71,7 @@ Als betroffene Person haben Sie nach der DSGVO verschiedene Rechte, insbesondere
 - **Recht auf Datenübertragbarkeit:** Sie haben das Recht, Ihre Daten in einem maschinenlesbaren Format zu erhalten oder deren Übertragung an einen anderen Verantwortlichen zu verlangen.
 - **Beschwerderecht bei der Aufsichtsbehörde:** Sie können bei einer Aufsichtsbehörde Beschwerde einlegen, wenn Sie der Ansicht sind, dass die Verarbeitung Ihrer Daten gegen die DSGVO verstößt.
 
-## 10. Änderungen dieser Datenschutzerklärung
+## 9. Änderungen dieser Datenschutzerklärung
 
 Wir behalten uns vor, diese Datenschutzerklärung anzupassen, sobald sich die technische Umsetzung der Website oder die Rechtslage ändert. Die jeweils aktuelle Fassung finden Sie stets auf dieser Seite.
 
